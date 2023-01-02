@@ -1,0 +1,56 @@
+/*
+Aluna: Júlia Magalhães de Sant'Anna
+Disciplina: Algoritmos e Programacao II
+TRABALHANDO COM VETORES
+----------------------------------------------------------------------------------------------
+Elabore um programa em C#:
+A) Calcule e retorne o valor da maior diferença entre dois elementos distintos no vetor.
+B) Verifica se o vetor está em ordem crescente, e retorna true caso esteja e false caso
+contrário.
+*/
+
+using System;
+class Program
+{
+public static void Main(string[] args)
+{
+Console.WriteLine("======Trabalhando com Vetores======");
+Console.WriteLine("Digite a quantidade de elementos do vetor: ");
+int n = int.Parse(Console.ReadLine());
+int[] array = new int[n];
+for (int i = 0; i < n; i++)
+{
+Console.WriteLine("Digite um numero: ");
+array[i] = int.Parse(Console.ReadLine());
+}
+Console.WriteLine(" A maior diferença entre os valores é: {0} ",
+diferenca(array));
+Console.WriteLine("Em ordem: {0}", emOrdem(array));
+}
+static int diferenca(int[] array)
+{
+int maiornum = Int32.MinValue;
+int menornum = Int32.MaxValue;
+for (int i = 0; i < array.Length; i++)
+{
+if (array[i] > maiornum){
+maiornum = array[i];
+}
+if(array[i] < menornum){
+menornum = array[i];
+}
+}
+return maiornum - menornum;
+}
+static bool emOrdem(int[] array)
+{
+bool estaEmOrdem = true;
+for (int i = 0; i < array.Length - 1; i++)
+{
+if(array[i + 1] < array[i])
+{
+estaEmOrdem = false;
+}
+}
+return estaEmOrdem;
+}

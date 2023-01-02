@@ -1,0 +1,50 @@
+/*
+Aluna: Júlia Magalhães de Sant'Anna 
+Data: 31/08/2022 
+Disciplina: Algorítmos e Programação I
+Exercício: PTI - O uso dos algoritmos e da programação nas tarefas do cotidiano.
+--------------------------------------------------------------------------
+A) que receba como entrada o preço da gasolina e o preço do álcool e
+informe ao usuário qual é o combustível mais vantajoso (ou se tanto faz
+abastecer qual qualquer um deles).
+B) Considere que depois, o programa deve perguntar ao usuário se deseja
+efetuar um novo cálculo: se o usuário confirmar que sim, o programa
+solicita as entradas novamente. Senão, o programa é encerrado.
+*/
+using System;
+class Program
+{
+    public static void Main(string[] args)
+    {
+      perguntaPrecos();
+      Console.WriteLine("Deseja efetuar um novo calculo? s/n: ");
+      while (Console.ReadLine() == "s")
+      {
+        perguntaPrecos(); 
+        Console.WriteLine("Deseja efetuar um novo calculo? s/n: ");
+      }  
+      Console.WriteLine("Fim");
+    }
+
+    public static void perguntaPrecos()
+    {
+      Console.WriteLine("Preço do Alcool: ");
+      double alcool = double.Parse(Console.ReadLine());
+      Console.WriteLine("Preço da Gasolina: ");
+      double gasolina = double.Parse(Console.ReadLine());
+      double div = Math.Round(alcool / gasolina, 2);
+      Console.WriteLine(div);
+      if (div > 0.7)
+      {
+        Console.WriteLine("Abasteça com Gasolina");
+      }
+      if (div < 0.7)
+      {
+        Console.WriteLine("Abasteça com Alcool");
+      }
+      if (div == 0.7)
+      {
+        Console.WriteLine("Abasteça com o combustível de preferência");
+      }
+    }
+}
